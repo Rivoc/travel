@@ -99,6 +99,7 @@ export default {
 .icons >>> .swiper-container {
   height: 0;
   padding-bottom: 25.3%;
+  background: #fff;
 }
 
 .icon {
