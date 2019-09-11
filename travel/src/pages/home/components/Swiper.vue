@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption"
+            v-if="showList">
       <!-- slides -->
       <swiper-slide v-for="item of swiperList"
                     :key="item.id">
-        <img :src="item.imgURL"
-             alt="图片1"
+        <img :src="item.imgUrl"
              class="swiper-img">
       </swiper-slide>
       <!-- 圆点 -->
@@ -26,24 +26,22 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    swiperList: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        loop: true
-      },
-      swiperList: [{
-        id: '0001',
-        imgURL: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20199/6732b10fa1a3b08b883e4aebd2e37f44.jpg_750x200_83dd47e1.jpg'
-      },
-      {
-        id: '0002',
-        imgURL: 'http://img1.qunarzz.com/piao/fusion/1706/b8/a8e8ff02b094c802.jpg_750x200_ddaec8e5.jpg'
-      },
-      {
-        id: '0003',
-        imgURL: 'http://img1.qunarzz.com/piao/fusion/1706/b9/6b91b49794f46402.jpg_750x200_d7f254e2.jpg'
-      }]
+        loop: true,
+        autoplay: 2000,
+        autoplayDisableOnInteraction: false//  触摸后重新启动autoplay
+      }
+    }
+  },
+  computed: {
+    showList () {
+      return this.swiperList.length
     }
   }
 }

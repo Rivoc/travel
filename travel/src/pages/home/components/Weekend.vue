@@ -3,7 +3,7 @@
     <div class="title">周末去哪儿</div>
     <ul>
       <li class="item border-bottom"
-          v-for="(item) of recommendList"
+          v-for="(item) of weekendList"
           :key="item.id">
         <div class="img-wrapper">
           <img class="item-img"
@@ -20,30 +20,10 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgURL: 'http://img1.qunarzz.com/sight/source/1505/fb/302620ed8350f8.jpg_r_640x214_25a07cb4.jpg',
-        title: '长沙必打卡',
-        desc: '到了长沙，一定要到这些地方走走'
-      },
-      {
-        id: '0002',
-        imgURL: 'http://img1.qunarzz.com/sight/source/1505/fb/302620ed8350f8.jpg_r_640x214_25a07cb4.jpg',
-        title: '长沙必打卡',
-        desc: '到了长沙，一定要到这些地方走走'
-      },
-      {
-        id: '0003',
-        imgURL: 'http://img1.qunarzz.com/sight/source/1505/fb/302620ed8350f8.jpg_r_640x214_25a07cb4.jpg',
-        title: '长沙必打卡',
-        desc: '到了长沙，一定要到这些地方走走'
-      }
-
-      ]
-    }
+  props: {
+    weekendList: Array
   }
+
 }
 </script>
 <style lang="stylus" scoped>
@@ -59,6 +39,7 @@ export default {
 
 .item {
   height: 3.43rem;
+  background: #fff;
 
   .img-wrapper {
     height: 0;

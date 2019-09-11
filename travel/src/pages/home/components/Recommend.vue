@@ -3,7 +3,7 @@
     <div class="title">猜你喜欢</div>
     <ul>
       <li class="item border-bottom"
-          v-for="(item) of recommendList"
+          v-for="item of recommendList"
           :key="item.id">
         <img class="item-img"
              :src=item.imgURL>
@@ -19,29 +19,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgURL: 'http://img1.qunarzz.com/sight/p0/1607/6a/6ad678f5a061a397c0.water.jpg_200x200_127bb4b8.jpg',
-        title: '铜官窑',
-        desc: '耗资100亿，超美超震撼'
-      },
-      {
-        id: '0002',
-        imgURL: 'http://img1.qunarzz.com/sight/p0/1607/6a/6ad678f5a061a397c0.water.jpg_200x200_127bb4b8.jpg',
-        title: '铜官窑',
-        desc: '耗资100亿，超美超震撼'
-      },
-      {
-        id: '0003',
-        imgURL: 'http://img1.qunarzz.com/sight/p0/1607/6a/6ad678f5a061a397c0.water.jpg_200x200_127bb4b8.jpg',
-        title: '铜官窑',
-        desc: '耗资100亿，超美超震撼'
-      }
-
-      ]
-    }
+  props: {
+    recommendList: Array
   }
 }
 </script>
