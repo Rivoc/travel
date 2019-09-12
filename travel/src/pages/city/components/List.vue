@@ -34,7 +34,8 @@
       </div>
       <div class="area"
            v-for="(item,key) of cities"
-           :key="key">
+           :key="key"
+           :ref="key">
         <h2 class="title border-topbottom">{{key}}</h2>
         <div class="item-list">
           <div class="item border-bottom"
@@ -55,9 +56,25 @@ export default {
     cities: Object,
     hotCities: Array
   },
+  data () {
+    return {
+      letter: ''
+    }
+  },
   mounted () {
-    console.log(this.$refs.wrapper)
     this.scroll = new Bscroll(this.$refs.wrapper)
+
+    this.bus.$on('childChange', (letter) => {
+      this.letter = letter
+    })
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+      }
+    }
   }
 }
 </script>
