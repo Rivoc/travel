@@ -6,7 +6,7 @@
         <h2 class="title">当前城市</h2>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">长沙</div>
+            <div class="button">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
@@ -15,21 +15,10 @@
         <div class="button-list">
           <div class="button-wrapper"
                v-for="item of hotCities"
-               :key="item.id">
+               :key="item.id"
+               @click="handleHotCityClick(item.name)">
             <div class="button">{{item.name}}</div>
           </div>
-          <!-- <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div> -->
         </div>
       </div>
       <div class="area"
@@ -40,7 +29,8 @@
         <div class="item-list">
           <div class="item border-bottom"
                v-for="innerItem of item"
-               :key="innerItem.id">
+               :key="innerItem.id"
+               @click="handleHotCityClick(innerItem.name)">
             {{innerItem.name}}
           </div>
         </div>
@@ -61,8 +51,14 @@ export default {
       letter: ''
     }
   },
+  methods: {
+    handleHotCityClick (city) {
+      this.$store.commit('cityChange', city)
+      this.$router.push('/')
+    }
+  },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+    this.scroll = new Bscroll(this.$refs.wrapper, { click: true })
 
     this.bus.$on('childChange', (letter) => {
       this.letter = letter

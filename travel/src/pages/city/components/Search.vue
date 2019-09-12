@@ -7,12 +7,14 @@
              v-model="keyword">
     </div>
     <div class="search-content"
-         :ref="wrapper"
+         ref="wrapper"
          v-show="hasKeyWord">
       <ul>
         <li class="search-item border-bottom"
             v-for="item of list"
-            :key=item.id>{{item.name}}</li>
+            :key=item.id
+            @click="handleHotCityClick(item.name)">
+          {{item.name}}</li>
         <li class="search-item border-bottom"
             v-show="hasNodata">没有找到匹配数据</li>
       </ul>
@@ -41,8 +43,14 @@ export default {
       return this.keyword
     }
   },
+  methods: {
+    handleHotCityClick (city) {
+      this.$store.commit('cityChange', city)
+      this.$router.push('/')
+    }
+  },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+    this.scroll = new Bscroll(this.$refs.wrapper, { click: true })
   },
   watch: {
     keyword () {
