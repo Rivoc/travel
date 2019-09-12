@@ -49,7 +49,7 @@ export default {
       if (this.timer) {
         clearTimeout(this.timer)
       }
-      if (!this.keyword) { // 搜索之后删掉关键词，清掉搜索结果
+      if (!this.keyword) { // 搜索之后删掉关键词，清掉结果列表
         this.list = []
         return
       }
