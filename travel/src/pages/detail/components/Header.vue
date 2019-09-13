@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     handleScroll () {
+      console.log('aa')
       const absHeaderHeight = getComputedStyle(this.$refs.absHeader).height.slice(0, -2)
       const top = document.documentElement.scrollTop
       if (top > absHeaderHeight) {
@@ -48,6 +49,10 @@ export default {
 
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+    window.scrollTo(0, 0)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
