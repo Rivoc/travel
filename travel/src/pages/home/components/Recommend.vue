@@ -2,9 +2,11 @@
   <div class="wrapper">
     <div class="title">猜你喜欢</div>
     <ul>
-      <li class="item border-bottom"
-          v-for="item of recommendList"
-          :key="item.id">
+      <router-link tag="li"
+                   :to="'/detail/'+item.id"
+                   class="item border-bottom"
+                   v-for="item of recommendList"
+                   :key="item.id">
         <img class="item-img"
              :src=item.imgURL>
         <div class="item-info">
@@ -12,7 +14,7 @@
           <p class="item-desc">{{item.desc}}</p>
           <button class="item-button">查看详情</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
