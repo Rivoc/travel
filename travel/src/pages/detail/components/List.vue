@@ -25,23 +25,27 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-.item-title {
-  font-size: 0.16rem;
-  font-weight: bold;
-  padding: 0.1rem 0rem 0.05rem 0.05rem;
+.item {
+  background: #fff;
 
-  .item-title-icon {
-    display: inline-block;
-    width: 0.35rem;
-    height: 0.35rem;
-    background: url('https://s.qunarzz.com/piao/image/touch/sight/detail.png') 0 -0.45rem no-repeat;
-    margin-right: 0.1rem;
-    background-size: 0.4rem 3rem;
-    vertical-align: middle;
-  }
+  .item-title {
+    font-size: 0.16rem;
+    font-weight: bold;
+    padding: 0.1rem 0rem 0.05rem 0.05rem;
 
-  .sec-title {
-    padding: 0 0.2rem;
+    .item-title-icon {
+      display: inline-block;
+      width: 0.35rem;
+      height: 0.35rem;
+      background: url('https://s.qunarzz.com/piao/image/touch/sight/detail.png') 0 -0.45rem no-repeat;
+      margin-right: 0.1rem;
+      background-size: 0.4rem 3rem;
+      vertical-align: middle;
+    }
+
+    .sec-title {
+      padding: 0 0.2rem;
+    }
   }
 }
 </style>

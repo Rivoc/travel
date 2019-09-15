@@ -2,17 +2,17 @@
   <div>
     <div class="banner"
          @click="handleBannerClick">
-      <img src="//img1.qunarzz.com/sight/p0/1804/1a/1a48cc20b0d6ed44a3.img.jpg_600x330_3f524da7.jpg"
+      <img :src="bannerImg"
            alt=""
            class="banner-img">
       <div class="banner-info">
         <div class="banner-number">
           <span class="iconfont">&#xe674;</span>
-          8</div>
-        <div class="banner-title">奥林匹克塔</div>
+          {{this.galleryImgs.length}}</div>
+        <div class="banner-title">{{this.sightName}}</div>
       </div>
     </div>
-    <common-gallery :imgs="imgs"
+    <common-gallery :imgs="galleryImgs"
                     v-if="showGallery"
                     @close="handelClose"></common-gallery>
   </div>
@@ -21,10 +21,16 @@
 import CommonGallery from 'common/gallery/Gallery'
 export default {
   name: 'DetailBanner',
+  props: {
+    bannerImg: String,
+    sightName: String,
+    galleryImgs: Array
+
+  },
   data () {
     return {
-      showGallery: false,
-      imgs: ['http://img1.qunarzz.com/sight/p0/1804/1a/1a48cc20b0d6ed44a3.img.jpg_350x240_8b1488b0.jpg', 'http://img1.qunarzz.com/sight/p0/1804/cf/cfab40f6cd9d80f1a3.img.jpg_350x240_57952850.jpg']
+      showGallery: false
+      // imgs: ['http://img1.qunarzz.com/sight/p0/1804/1a/1a48cc20b0d6ed44a3.img.jpg_350x240_8b1488b0.jpg', 'http://img1.qunarzz.com/sight/p0/1804/cf/cfab40f6cd9d80f1a3.img.jpg_350x240_57952850.jpg']
     }
   },
   components: {
@@ -33,11 +39,10 @@ export default {
   methods: {
     handleBannerClick () {
       this.showGallery = true
-      console.log('打开')
     },
     handelClose () {
       this.showGallery = false
-      console.log('关闭')
+      window.scrollTo(0, 0)
     }
   }
 }

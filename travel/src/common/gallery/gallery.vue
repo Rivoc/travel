@@ -40,7 +40,6 @@ export default {
   methods: {
     handleSwiperClick () {
       this.$emit('close')
-      console.log('发送了关闭')
     }
   }
 
@@ -53,6 +52,7 @@ export default {
 
 .container {
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   right: 0;
